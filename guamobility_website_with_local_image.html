@@ -1,95 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Global Urban Air Mobility</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+
   <style>
-    html,
     body {
-      overflow: -webkit-paged-x;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* Internet Explorer 10+ */
-    }
-
-    html::-webkit-scrollbar,
-    body::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, and Edge */
-    }
-
-    body {
-      margin: -20px;
       font-family: "Montserrat", sans-serif;
-      color: white;
-      letter-spacing: 2px;
-      font-weight: lighter;
-      margin-bottom: 10px;
-    }
-
+      color: rgb(0, 0, 0);
+      width: auto;
+      margin: 0;
+      padding: 0;
+    }    
+    
+    /* Navbar spacing */
     nav {
-      background-color: #3e70ab;
-      padding: 20px;
+      padding: 10px 0;
+    }
+
+
+    /* Fullscreen sections */
+    section {
+      min-height: 100vh;
+      width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 16px;
-      font-weight: bold;
       position: relative;
+      padding: 0;
     }
-
-    nav a.active:after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: white;
-    }
-
-    nav img {
-      width: 100px;
-    }
-
     .hero-section {
       position: relative;
       height: 100vh;
       background: url("./test.jpg") no-repeat center center/cover;
+  
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 80px; /* To account for the fixed navbar height */
+      width: auto;
     }
 
     .hero-content {
       text-align: center;
-      color: white;
       z-index: 2;
-      position: relative;
-    }
-
-    .hero-content h1 {
-      font-size: 70px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .hero-content p {
-      font-size: 35px;
-      letter-spacing: 2px;
-      font-weight: lighter;
-      margin-bottom: 10px;
+      color: white;
     }
 
     .overlay {
@@ -98,247 +58,73 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(26, 56, 56, 0.801);
+      background-color: rgba(26, 56, 56, 0.8);
       z-index: 1;
     }
 
-    .scroll-icon {
-      position: absolute;
-      bottom: 20px;
+    .nav-link.active {
+      border-bottom: 3px solid white;
+    }
+
+    footer {
+      background-color: #333;
       color: white;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    /* About Section */
-    .about-section {
-      position: relative;
-      color: white;
-      overflow: hidden;
-      height: 100vh;
-    }
-
-    .about-section img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 120%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-
-    .about-content {
-        position: relative;
-    z-index: 1;
-    background-color: rgba(26, 56, 56, 0.801);
-    margin-top: -4%;
-    margin-bottom: 0%;
-    height: 116%;
-    padding-left: 10%;
-    padding-right: 10%;
-    width: 30%;
-    text-align: justify;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    }
-
-    .about-content p {
-      font-size: 25px;
-      line-height: 1.6;
-      margin: -20%;
-      font-weight: 400;
-    }
-
-    .about-content p strong {
-      font-weight: 700;
-    }
-
-    /* About2 Section */
-    .about2-section .text-div-about2 {
-      background-color: rgba(255, 255, 255, 0.7);
-      font-size: 29px;
-      border-radius: 10px;
-      width: 100%;
-    }
-
-    .about2-section .photo-div img {
-      max-width: 60%;
-      height: auto;
-    }
-
-    /* About3 Section */
-    .about3-container {
-      width: 100%;
-      text-align: center;
-      padding-top: 0%;
-    }
-
-    .text-photo-background {
-      position: relative;
-      background-image: url("Design\ 13-35.png");
-      background-size: cover;
-      background-position: center;
-      height: 100%;
-      color: rgb(0, 0, 0);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .text-div {
-      position: relative;
-      z-index: 2;
-      background-color: rgba(255, 255, 255, 0.7);
       padding: 20px;
-      border-radius: 10px;
-      width: 100%;
-    }
-
-    .about3-itemphoto {
-      width: 100%;
       text-align: center;
     }
 
-    .overlay-image {
-      max-width: 60%;
-      height: auto;
-      align-items: center;
-      margin: 20px 0;
-    }
-
-    /* Experts Section */
-    .experts-container {
-      width: 100%;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .experts-container h2 {
-      color: #000000;
-      text-align: left;
-    }
-
-    .experts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .expert {
-      background-color: #f9f9f9;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .expert img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-
-    .expert h3 {
-      font-size: 1.2em;
-      margin-bottom: 10px;
-      color: #3e70ab;
-    }
-
-    .expert p {
-      font-size: 0.9em;
-      margin: 5px 0;
-      color: #000000;
-    }
-
-    /* Services Section */
     .service-section {
-        display: flex;
-        position: relative;
-      color: white;
-      height: 80vh;
+      position: relative;
       padding: 0;
-    }
-
-    .service-section img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
+      height: 100vh;
+      background: url('image-35.png') no-repeat center center/cover;
     }
 
     .service-content {
-      position: relative;
-      z-index: 1;
-      background-color: rgba(26, 56, 56, 0.801);
-      padding-left: 10%;
-      padding-right: 10%;
-      width: 30%;
-      text-align: justify;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    /* Slider */
-    .slider {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for better readability */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .service-content .slider {
+      width: 80%;
+      color: white;
+      text-align: center;
+    }
+
+    .service-content h2 {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .service-content p {
+      font-size: 18px;
+      line-height: 1.6;
     }
 
     .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
+      display: none;
     }
 
-    .slide {
-      min-width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    .background-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .content {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      text-align: center;
-      padding: 0px;
-      border-radius: 8px;
+    .slide.active {
+      display: block;
     }
 
     .dots {
+      margin-top: 30px;
       text-align: center;
-      position: absolute;
-      bottom: 0px;
-      width: 100%;
     }
 
     .dot {
-      height: 15px;
-      width: 15px;
+      height: 12px;
+      width: 12px;
       margin: 0 5px;
       background-color: #bbb;
       border-radius: 50%;
@@ -350,456 +136,857 @@
     .dot.active {
       background-color: white;
     }
-
-    /* Studies and Research Section */
-    .studies-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 20px;
-    }
-
-    .studies-container .section {
-      width: 48%;
-      margin-bottom: 20px;
-    }
-
-    .studies-container .section .image-wrapper img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 20px;
-    }
-
-    @media (max-width: 768px) {
-      .about-content,
-      .service-content {
-        width: 100%;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 20px;
-      }
-
-      .about-section,
-      .service-section {
-        flex-direction: column;
-        height: auto;
-      }
-
-      .about-section img,
-      .service-section img {
-        position: relative;
-        width: 100%;
-        height: auto;
-      }
-
-      .studies-container .section {
-        width: 100%;
-      }
-    }
-
-    /* Gallery */
-    .gallery-container {
-      width: 90%;
-      margin: 0 auto;
-      padding: 20px 0;
-    }
-
-    .gallery-container h2 {
-      color: #000000;
-      text-align: left;
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
     .gallery-item {
-      flex: 1 1 calc(33.333% - 20px);
-      box-sizing: border-box;
+      margin-bottom: 20px;
     }
 
-    .gallery img {
+
+    .about-section   
+ {
+            background-image: url('about-image.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            min-height: 400px; /* Adjust as needed */
+            display: flex;
+            align-items: center; 
+            text-align: center; 
+        }
+
+        .about-content {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px; 
+            border-radius: 10px; 
+            margin: 0 auto; /* Center the content */
+            max-width: 800px; /* Adjust as needed */
+        }
+
+        .about-content strong {
+            font-weight: bold; /* Ensure strong tag is bold */
+        }
+    .about-section img {
       width: 100%;
       height: auto;
-      display: block;
-    }
-
-    @media (max-width: 1200px) {
-      .gallery-item {
-        flex: 1 1 calc(50% - 20px);
-      }
+      object-fit: cover;
     }
 
     @media (max-width: 768px) {
-      .gallery-item {
-        flex: 1 1 100%;
+      .about-content {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+
+      .about-section {
+        justify-content: center; height: 100%;
       }
     }
 
-    footer {
-      background-color: #333;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+    .containerExperts {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 
-    .btn-next {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #3e70ab;
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+  .experts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+  }
 
-    .btn-next:hover {
-      background-color: #2d5491;
+  .expert {
+    flex: 1 1 calc(3.333% - 20px);
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .expert img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .expert h3 {
+    margin-top: 15px;
+    font-size: 1.5rem;
+  }
+
+  .expert p {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  @media (max-width: 768px) {
+    .expert {
+      flex: 1 1 calc(50% - 20px);
     }
+  }
+
+  @media (max-width: 576px) {
+    .expert {
+      flex: 1 1 100%;
+    }
+  }
   </style>
 </head>
+
 <body>
-  <nav>
-    <img src="guam.png" alt="Logo" />
-    <div>
-      <a href="#hero" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About Us</a>
-      <a href="#services" class="nav-link">Our Services</a>
-      <a href="#Expertise" class="nav-link">Expertise</a>
-      <a href="#contact" class="nav-link">Contact</a>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="guam.png" alt="Logo" style="width: 80px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Our Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Expertise">Expertise</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero-section" id="hero">
     <div class="overlay"></div>
-    <!-- Dark overlay -->
-    <div class="hero-content">
-      <h1>GLOBAL URBAN AIR MOBILITY</h1>
-      <p>
-        "Empowering cities' future with our solution for<br />
-        implementing Urban Air Mobility (UAM) strategies"
-      </p>
+    <div class="hero-content text-white">
+      <h1 class="display-4">GLOBAL URBAN AIR MOBILITY</h1>
+      <p class="lead">Empowering cities' future with our solution for implementing Urban Air Mobility (UAM) strategies</p>
     </div>
   </section>
 
-  <section class="about-section" id="about">
-    <!-- Background image -->
-    <img src="about-image.jpg" alt="Drones Image" />
 
-    <!-- Overlay text content -->
-    <div class="about-content">
-      <p>
-        <strong>GUAMOBILITY</strong> is a consulting ﬁrm positioned as a key
-        player in supporting countries, territories, and cities in the
-        development of Advanced Air Mobility (AAM) and Urban Air Mobility
-        (UAM) strategies. Our focus is on sustainability, decarbonization,
-        accessibility, and public acceptance, contributing to the reduction of
-        GHG emissions and expanding accessibility to new urban mobility
-        options. We ensure seamless intermodal integration with conventional
-        transport systems.
-        <br />
-        <br />
-        By offering innovative, environmentally friendly, and acceptable
-        solutions, <strong>GUAMOBILITY</strong> helps governments and cities
-        optimally integrate advanced air mobility infrastructure into urban
-        spaces, promoting cleaner, safer, and more sustainable mobility
-      </p>
-    </div>
-  </section>
+  <section class="about-section" style="          background-image: url('about-image.jpg'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  min-height: 400px; /* Adjust as needed */
+  display: flex;
+  align-items: center; 
+  text-align: center; " id="about">
+    <div class="container"> 
+        <div class="about-content">
+            <p><strong>GUAMOBILITY</strong> is a consulting firm positioned as a key player in supporting countries, territories, and cities in the development of Advanced Air Mobility (AAM) and Urban Air Mobility (UAM) strategies. Our focus is on sustainability, decarbonization, accessibility, and public acceptance, contributing to the reduction of GHG emissions and expanding accessibility to new urban mobility options. We ensure seamless intermodal integration with conventional transport systems.</p>
 
-  <section class="about2-section" id="about">
-    <div class="text-div-about2">
-      <p style=" color: #333; text-align: justify;margin-right: 10%; margin-left: 10%;">
-        To achieve these objectives, <strong> GUAMOBILITY </strong>has brought
-        together a network of experts, consultants, and companies with
-        complementary skills, ranging from urban planners and architects to
-        aeronautical engineers and legal experts. Together, we deliver
-        integrated AAM/UAM services, driving new socio-economic opportunities
-        in what we call the "<strong>Low-Altitude Urban Economy.</strong>"
-      </p>
+            <p>By offering innovative, environmentally friendly, and acceptable solutions, <strong>GUAMOBILITY</strong> helps governments and cities optimally integrate advanced air mobility infrastructure into urban spaces, promoting cleaner, safer, and more sustainable mobility.</p>
+        </div>
     </div>
-    <div class="photo-div">
-      <img src="ECO-35.png" alt="Low-Altitude Urban Economy Image" />
-    </div>
-  </section>
+</section>
+  
+  <!-- Add this CSS for styling -->
+  <style>
+    .about-section {
+      position: relative;
+      background-image: url('about-image.jpg'); /* Replace with your image path */
+      background-size: cover;
+      background-position: center;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      padding: 20px;
+    }
+  
+    /* Dark overlay for better text contrast */
+    .about-section .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+       z-index: 1;
+    }
+  
+    .about-content {
+      position: relative;
+      z-index: 2; /* To ensure content is on top of the overlay */
+      max-width: 600px;
+      margin-left: 10%;
+        margin-bottom: -20px;
+        margin-top: -20px;
+      background-color:  rgba(0, 0, 0, 0.5);
+      color: #ffffff;
+    }
+  
+    .about-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+  
+    .about-content strong {
+      font-size: 1.4rem;
+    }
+  
+    .abmy51{
+        margin-top:  -111px!important;
+        margin-bottom: -60px !important;
+      }
+      .abmy52{
+        margin-top:  -111px!important;
+        margin-bottom: -60px !important;
+      }
 
-  <section class="about3-section" id="about">
-    <div class="about3-container">
-      <div class="text-photo-background">
-        <div class="text-div">
-          <h2>Our offering is built on <strong>four key pillars:</strong></h2>
-          <div class="about3-itemphoto">
-            <img src="pillier-35.png" alt="Key Pillars" class="overlay-image" />
-          </div>
-          <p style="font-size: 29px;">
-            In addition to working with cities and territories,
-            <strong> GUAMOBILITY </strong>also addresses the needs of
-            institutional and private clients across sectors such as
-            transportation, logistics, regulation, hospitality, and finance,
-            offering market positioning studies and insights into how AAM/UAM
-            impacts their respective industries.
-          </p>
+    @media (max-width: 768px) {
+      .about-content {
+        margin-left: 5%;
+        max-width: 100%;
+      }
+      
+      .abmy51{
+        margin-top:  -111px!important;
+        margin-bottom: -359px !important;
+      }
+      .abmy52{
+        margin-top:  -111px!important;
+        margin-bottom: -111px !important;
+      }
+      .about-content p {
+        font-size: 1rem;
+      }
+  
+      .about-content strong {
+        font-size: 1.2rem;
+      }
+    }
+
+
+    .text-photo-background {
+        position: relative;
+        background-image: url("Design\ 13-35.png"); /* Set your background image */
+        background-size: cover;
+        background-position: center;
+        height: 100%; /* Adjust height based on your needs */
+        color: rgb(0, 0, 0); /* Set the color of the text */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  </style>
+  <!-- About2 Section -->
+  <section class="container my-5 abmy51" id="about">
+    <div class="text-photo-background row align-items-center">
+      <div style="    background-color: rgb(255 255 255 / 50%);
+    min-width: 100%;" class="col-lg-8 mx-auto">
+        <div class="bg-light p-4 rounded text-dark">
+          <p class="text-justify">To achieve these objectives, <strong>GUAMOBILITY</strong> has brought together a network of experts, consultants, and companies with complementary skills, ranging from urban planners and architects to aeronautical engineers and legal experts. Together, we deliver integrated AAM/UAM services, driving new socio-economic opportunities in what we call the "<strong>Low-Altitude Urban Economy</strong>."</p>
+        </div>
+        <div class="col-lg-8 mx-auto text-center mt-4">
+          <img src="ECO-35.png" alt="Low-Altitude Urban Economy Image" class="img-fluid">
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Our Offering Section -->
+  <section class="container my-5 abmy52" id="about">
+    <div class="text-photo-background row align-items-center">
+      <div  style="    background-color: rgb(255 255 255 / 50%);
+    min-width: 100%;"  class="col-lg-8 mx-auto text-center">
+        <h2>Our offering is built on <strong>four key pillars</strong></h2>
+        <img src="pillier-35.png" alt="Key Pillars" class="img-fluid mb-4">
+        <p class="lead">In addition to working with cities and territories, <strong>GUAMOBILITY</strong> also addresses the needs of institutional and private clients across sectors such as transportation, logistics, regulation, hospitality, and finance, offering insights into how AAM/UAM impacts their respective industries.</p>
+      </div>
+    </div>
+  </section>
+
+
   <section class="about4-section" id="about">
-    <div class="experts-container">
-      <h2>OUR EXPERT PARTNERS</h2>
+    <div class="containerExperts">
+      <h2 style="color: #000000; text-align: left">OUR EXPERT PARTNERS</h2>
       <div class="experts-grid">
-        <!-- Repeat expert blocks as needed -->
-        <!-- Expert 1 -->
         <div class="expert">
           <img src="CARTE SITE GUAM-18.png" alt="Borhene DHAOUADI" />
           <h3>Borhene DHAOUADI</h3>
           <p>Architecte - urbaniste</p>
           <p>CEO GUAM</p>
-        </div>          <div class="expert">
-            <img src="CARTE SITE GUAM-19.png" alt="Frédéric AGUETTANT" />
-            <h3>Frédéric AGUETTANT</h3>
-            <p>CEO HELIPASS</p>
-            <p>Partenaire GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-20.png" alt="Luc TYTGAT" />
-            <h3>Luc TYTGAT</h3>
-            <p>Cadre réglementaire de l'aviation/UAM</p>
-            <p>CEO LUNA Project</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-27.png" alt="Katherine AYRE" />
-            <h3>Katherine AYRE</h3>
-            <p>Avocate - Réglementation Municipalités</p>
-            <p>Partenaire GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-35-36.png" alt="Amine SDIRI" />
-            <h3>Amine SDIRI</h3>
-            <p>Expert PPP Transport</p>
-            <p>Jade Advisory, Partenaire GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-28.png" alt="Akil SADKAOUI" />
-            <h3>Akil SADKAOUI</h3>
-            <p>Change Management</p>
-            <p>CEO ASIC, Partenaire GUAM</p>
-          </div>
         </div>
-        <div class="experts-grid">
-          <div class="expert">
-            <img src="CARTE SITE GUAM-21.png" alt="Rania SAOUDI" />
-            <h3>Rania SAOUDI</h3>
-            <p>Architecte</p>
-            <p>GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-22.png" alt="Regis HELLOT" />
-            <h3>Regis HELLOT</h3>
-            <p>Expert Infrastructures Aéroportuaires</p>
-            <p>GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-23.png" alt="Olivier LE LANN" />
-            <h3>Olivier LE LANN</h3>
-            <p>Expert Système Drone</p>
-            <p>CEO EVA, Partenaire GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-29.png" alt="Wajdi BEN HELAL" />
-            <h3>Wajdi BEN HELAL</h3>
-            <p>Expert Digital / IA / Interfaces ATM</p>
-            <p>GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-30.png" alt="Osswa DRIDI" />
-            <h3>Osswa DRIDI</h3>
-            <p>Business Development & Marketing Manager</p>
-            <p>GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-31.png" alt="Imen SFAXI" />
-            <h3>Imen SFAXI</h3>
-            <p>Consultante en Accessibilité</p>
-            <p>GUAM</p>
-          </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-19.png" alt="Frédéric AGUETTANT" />
+          <h3>Frédéric AGUETTANT</h3>
+          <p>CEO HELIPASS</p>
+          <p>Partenaire GUAM</p>
         </div>
-        <div class="experts-grid">
-          <div class="expert">
-            <img src="CARTE SITE GUAM-24.png" alt="Amine DHAOUADI" />
-            <h3>Amine DHAOUADI</h3>
-            <p>Architecte - Urbaniste</p>
-            <p>GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-25.png" alt="Amit GANGOO" />
-            <h3>Amit GANGOO</h3>
-            <p>Air Traffic Management</p>
-            <p>CEO - ANRA Technologies, Partenaire GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-26.png" alt="Hans SIMILON" />
-            <h3>Hans SIMILON</h3>
-            <p>Consultant en Drones</p>
-            <p>CITIMESH, Partenaire GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-32.png" alt="Ali SAIDI" />
-            <h3>Ali SAIDI</h3>
-            <p>Expert Transport</p>
-            <p>GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-33.png" alt="Safa BEN SLIMANE" />
-            <h3>Safa BEN SLIMANE</h3>
-            <p>Expert Transport</p>
-            <p>GUAM</p>
-          </div>
-          <div class="expert">
-            <img src="CARTE SITE GUAM-34.png" alt="Jamila AKERMI" />
-            <h3>Jamila AKERMI</h3>
-            <p>Expert PPP Transport</p>
-            <p>GUAM</p>
-          </div>
-        <!-- Add other experts similarly -->
+        <div class="expert">
+          <img src="CARTE SITE GUAM-20.png" alt="Luc TYTGAT" />
+          <h3>Luc TYTGAT</h3>
+          <p>Cadre réglementaire de l'aviation/UAM</p>
+          <p>CEO LUNA Project</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-27.png" alt="Katherine AYRE" />
+          <h3>Katherine AYRE</h3>
+          <p>Avocate - Réglementation Municipalités</p>
+          <p>Partenaire GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-35-36.png" alt="Amine SDIRI" />
+          <h3>Amine SDIRI</h3>
+          <p>Expert PPP Transport</p>
+          <p>Jade Advisory, Partenaire GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-28.png" alt="Akil SADKAOUI" />
+          <h3>Akil SADKAOUI</h3>
+          <p>Change Management</p>
+          <p>CEO ASIC, Partenaire GUAM</p>
+        </div>
+      </div>
+      <div class="experts-grid">
+        <div class="expert">
+          <img src="CARTE SITE GUAM-21.png" alt="Rania SAOUDI" />
+          <h3>Rania SAOUDI</h3>
+          <p>Architecte</p>
+          <p>GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-22.png" alt="Regis HELLOT" />
+          <h3>Regis HELLOT</h3>
+          <p>Expert Infrastructures Aéroportuaires</p>
+          <p>GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-23.png" alt="Olivier LE LANN" />
+          <h3>Olivier LE LANN</h3>
+          <p>Expert Système Drone</p>
+          <p>CEO EVA, Partenaire GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-29.png" alt="Wajdi BEN HELAL" />
+          <h3>Wajdi BEN HELAL</h3>
+          <p>Expert Digital / IA / Interfaces ATM</p>
+          <p>GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-30.png" alt="Osswa DRIDI" />
+          <h3>Osswa DRIDI</h3>
+          <p>Business Development & Marketing Manager</p>
+          <p>GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-31.png" alt="Imen SFAXI" />
+          <h3>Imen SFAXI</h3>
+          <p>Consultante en Accessibilité</p>
+          <p>GUAM</p>
+        </div>
+      </div>
+      <div class="experts-grid">
+        <div class="expert">
+          <img src="CARTE SITE GUAM-24.png" alt="Amine DHAOUADI" />
+          <h3>Amine DHAOUADI</h3>
+          <p>Architecte - Urbaniste</p>
+          <p>GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-25.png" alt="Amit GANGOO" />
+          <h3>Amit GANGOO</h3>
+          <p>Air Traffic Management</p>
+          <p>CEO - ANRA Technologies, Partenaire GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-26.png" alt="Hans SIMILON" />
+          <h3>Hans SIMILON</h3>
+          <p>Consultant en Drones</p>
+          <p>CITIMESH, Partenaire GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-32.png" alt="Ali SAIDI" />
+          <h3>Ali SAIDI</h3>
+          <p>Expert Transport</p>
+          <p>GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-33.png" alt="Safa BEN SLIMANE" />
+          <h3>Safa BEN SLIMANE</h3>
+          <p>Expert Transport</p>
+          <p>GUAM</p>
+        </div>
+        <div class="expert">
+          <img src="CARTE SITE GUAM-34.png" alt="Jamila AKERMI" />
+          <h3>Jamila AKERMI</h3>
+          <p>Expert PPP Transport</p>
+          <p>GUAM</p>
+        </div>
       </div>
     </div>
   </section>
-
-  <section id="services"></section>
-  <section class="service-section" id="services">
+<!-- Services Section -->
+<!-- Services Section -->
+<section style="padding: 0%;" class="service-section" id="services">
     <!-- Background image -->
     <img src="image-35.png" alt="Drones Image" />
 
     <!-- Overlay text content -->
     <div class="service-content">
-      <div class="slider">
-        <div class="slides">
-          <!-- Slide 1 -->
-          <div class="slide active">
-            <div class="content">
-              <h2>SUPPORT THE DEVELOPMENT AND COMPLIANCE OF THE LOCAL AVIATION FRAMEWORK FOR UAM:</h2>
-              <p>Developing UAM regulatory and operational frameworks, in harmony with the specific needs of each region or locality, including obtaining necessary authorizations in line with safety, security, privacy and sustainability requirements,
-                as well as identification of suitable UAM operators and interface with them.</p>
+        <div id="services" class="slider">
+            <div class="slides">
+                <div class="slide active">
+                    <div class="content">
+                        <h2>SUPPORT THE DEVELOPMENT AND COMPLIANCE OF THE LOCAL AVIATION FRAMEWORK FOR UAM:</h2>
+                        <p>Developing UAM regulatory and operational frameworks, in harmony with the specific needs of each region or locality, including obtaining necessary authorizations in line with safety, security, privacy and sustainability requirements,
+                             as well as identification of suitable UAM operators and interface with them.</p>
+                        
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="content">
+                        <h2>CONDUCTING PRE-FEASIBILITY STUDIES FOR URBAN AIR MOBILITY SYSTEMS:</h2>
+                        <p>Conducting in-depth analyses, based on traffic studies, socio-economic studies, and recommendations on economic models, to assess the viability and impact of urban air mobility projects.</p>  
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="content">
+                        <h2>MASTER PLANNING FOR DRONE SYSTEMS AND ACTION PLAN:</h2>
+                        <p>Designing detailed strategic plans for the integration of drones into urban infrastructure, identifying priority objectives, necessary resources, and key steps for implementation.</p>                           
+                    </div>
+                </div>
+          
+                <div class="slide">
+                    <div class="content">
+                        <h2>IMPLEMENTATION OF POCS AND DEMONSTRATORS ACCORDING TO THE MOST RELEVANT USE CASES FOR EACH TERRITORY:</h2>
+                        <p>Developing and testing prototypes and demonstrators of urban air mobility solutions, highlighting their utility and feasibility in specific urban contexts.</p>
+                        
+                    </div>
+                </div>
+        
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="content">
+                        <h2>CONDUCTING DETAILED DEPLOYMENT STUDIES AND PROJECT EXECUTION MANAGEMENT:</h2>
+                        <p>Developing detailed operational plans and supervising the implementation of urban air mobility projects, ensuring compliance with quality and safety standards.</p>
+                        
+                    </div>
+                </div>
+
+                <div class="slide">
+                      <div class="content">
+                        <h2>FEDERATION OF NATIONAL, REGIONAL, AND LOCAL ECOSYSTEMS AROUND URBAN AIR MOBILITY:</h2>
+                        <p>Establishing partnerships and synergies among governmental, industrial, and community stakeholders to develop urban air mobility solutions tailored to each territory.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="content">
+                        <h2>USER INTERACTION POINT:</h2>
+                        <p>Establishing a strategy for transparent communication and close collaboration with end-users, local authorities, and relevant stakeholders, to proactively address their needs and concerns, and optimize the acceptance and adoption of urban air mobility solutions.</p>
+                    </div>
+                </div>
+              </div>
+        
+            <!-- Dots for navigation -->
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add this CSS for styling -->
+<style>
+      .service-section {
+        display: flex;
+        position: relative;
+        height: 80vh;
+        color: white;
+        overflow: hidden; /* Ensure nothing overflows outside the section */
+      }
+
+      .service-section img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      .service-content {
+        position: relative;
+        z-index: 1; /* Content is above the background image */
+        background-color: rgba(26, 56, 56, 0.8); /* Dark overlay for better readability */
+        padding-left: 0%;
+        padding-right: 0%;
+        width: 40%; /* Adjust the width of the content */
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .service-content h3 {
+        font-size: 35px;
+        margin-bottom: 20px;
+        font-weight: 700; /* Bold font */
+      }
+
+      .service-content p {
+        font-size: 25px;
+        line-height: 1.6;
+        word-spacing: normal;
+        font-weight: 400; /* Regular font */
+      }
+
+      .slider {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .background-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .content {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: center;
+        padding: 0px;
+        border-radius: 8px;
+      }
+
+      .icon {
+        margin-top: 20px;
+      }
+
+      .icon img {
+        width: 40px;
+      }
+
+      .dots {
+        text-align: center;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+      }
+
+      .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 5px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .dot.active {
+        background-color: white;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+            
+
+        .service-content {
+          width: 100%;
+          padding: 10px;
+          overflow: visible; /* Ensure the content is visible on mobile */
+        }
+
+        .service-content h3 {
+          font-size: 28px;
+        }
+
+        .service-content p {
+          font-size: 18px;
+        }
+
+        .slides {
+          flex-direction: row;
+          transform: translateX(0); /* Ensure slides are in view */
+        }        .service-section {
+    display: flex;
+    position: relative;
+    height: 50vh;
+    color: white;
+    overflow: hidden;
+}
+
+
+        .slide {
+          display: block;
+        }
+
+        .content {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      @media (max-width: 1000px) {
+        .service-content h3 {
+          font-size: 28px;
+        }
+
+        .service-content p {
+          font-size: 22px;
+        }
+
+        .dots {
+          bottom: 20px;
+        }
+        .service-section {
+    display: flex;
+    position: relative;
+    height: 50vh;
+    color: white;
+    overflow: hidden;
+}
+
+        .dot {
+          height: 10px;
+          width: 10px;
+        }
+      }
+      @media (max-width: 480px) {
+        .service-content h3 {
+          font-size: 28px;
+        }
+
+        .service-content p {
+          font-size: 22px;
+        }
+
+        .dots {
+          bottom: 20px;
+        }
+        .service-section {
+    display: flex;
+    position: relative;
+    height: 50vh;
+    color: white;
+    overflow: hidden;
+}
+
+        .dot {
+          height: 10px;
+          width: 10px;
+        }
+      }
+</style>
+
+
+
+  <!-- JavaScript to handle the slider -->
+ 
+<!-- Studies and Research Section -->
+<section class="container my-5" id="Expertise">
+    <div class="row">
+      <h2 class="text-left font-weight-bold">OUR STUDIES AND RESEARCH</h2>
+      
+      <div class="col-md-12 d-flex justify-content-between flex-wrap">
+        <div class="col-md-6">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo.
+          </p>
+        </div>
+      </div>
+  
+      <div class="col-md-12 d-flex justify-content-between flex-wrap">
+        <div class="col-md-6">
+          <div class="row">
+            <!-- First Column of Images -->
+            <div class="col-md-6 col-12 p-1">
+              <a href="./master plan Type G0-35.png" data-lightbox="research-gallery" data-title="Research Image 1">
+                <img src="./master plan Type G0-35.png" class="img-fluid" alt="Map and research image 1">
+              </a>
+            </div>
+            <div class="col-md-6 col-12 p-1">
+              <a href="./master plan Type G0 2-35.png" data-lightbox="research-gallery" data-title="Research Image 2">
+                <img src="./master plan Type G0 2-35.png" class="img-fluid" alt="Map and research image 2">
+              </a>
+            </div>
+            <div class="col-md-6 col-12 p-1">
+              <a href="./master plan Type G0 3-35-35.png" data-lightbox="research-gallery" data-title="Research Image 3">
+                <img src="./master plan Type G0 3-35-35.png" class="img-fluid" alt="Map and research image 3">
+              </a>
+            </div>
+            <div class="col-md-6 col-12 p-1">
+              <a href="./master plan Type G0 4-35-35.png" data-lightbox="research-gallery" data-title="Research Image 4">
+                <img src="./master plan Type G0 4-35-35.png" class="img-fluid" alt="Map and research image 4">
+              </a>
             </div>
           </div>
-          <div class="slide">
-            <div class="content">
-                <h2>CONDUCTING PRE-FEASIBILITY STUDIES FOR URBAN AIR MOBILITY SYSTEMS:</h2>
-                <p>Conducting in-depth analyses, based on traffic studies,               socio-economic studies, and recommendations on economic models, to assess the viability and impact of urban air mobility projects.</p>  
-            </div>
-            </div>
-
-        <div class="slide">
-            <div class="content">
-                <h2>MASTER PLANNING FOR DRONE SYSTEMS AND ACTION PLAN:</h2>
-                <p>Designing detailed strategic plans for the integration of drones into urban infrastructure, identifying priority objectives, necessary resources, and key steps for implementation.</p>                           
-            </div>
         </div>
   
-        <div class="slide">
-            <div class="content">
-                <h2>IMPLEMENTATION OF POCS AND DEMONSTRATORS ACCORDING TO THE MOST RELEVANT USE CASES FOR EACH TERRITORY:</h2>
-                <p>Developing and testing prototypes and demonstrators of urban air mobility solutions, highlighting their utility and feasibility in specific urban contexts.</p>
-                
+        <div class="col-md-6">
+          <div class="row">
+            <!-- Second Column of Images -->
+            <div class="col-md-12 col-12 p-1">
+              <a href="./Valdoise-35.png" data-lightbox="research-gallery" data-title="Research Image 5">
+                <img src="./Valdoise-35.png" class="img-fluid" alt="Map and research image 5">
+              </a>
             </div>
-        </div>
-        <div class="slide">
-            <div class="content">
-                <h2>CONDUCTING DETAILED DEPLOYMENT STUDIES AND PROJECT EXECUTION MANAGEMENT:</h2>
-                <p>Developing detailed operational plans and supervising the implementation of urban air mobility projects, ensuring compliance with quality and safety standards.</p>
-                
+            <div class="col-md-4 col-4 p-1">
+              <a href="./Valdoise-2-35.png" data-lightbox="research-gallery" data-title="Research Image 6">
+                <img src="./Valdoise-2-35.png" class="img-fluid" alt="Map and research image 6">
+              </a>
             </div>
-        </div>
-
-        <div class="slide">
-              <div class="content">
-                <h2>FEDERATION OF NATIONAL, REGIONAL, AND LOCAL ECOSYSTEMS AROUND URBAN AIR MOBILITY:</h2>
-                <p>Establishing partnerships and synergies among governmental, industrial, and community stakeholders to develop urban air mobility solutions tailored to each territory.</p>
+            <div class="col-md-4 col-4 p-1">
+              <a href="./Valdoise-3-35.png" data-lightbox="research-gallery" data-title="Research Image 7">
+                <img src="./Valdoise-3-35.png" class="img-fluid" alt="Map and research image 7">
+              </a>
             </div>
-        </div>
-        <div class="slide">
-            <div class="content">
-                <h2>USER INTERACTION POINT:</h2>
-                <p>Establishing a strategy for transparent communication and close collaboration with end-users, local authorities, and relevant stakeholders, to proactively address their needs and concerns, and optimize the acceptance and adoption of urban air mobility solutions.</p>
-            </div>
-        </div> 
-        </div><!-- Dots for navigation -->
-        <div class="dots"> 
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-    </div>
-
-        
-      </div>
-    </div>
-  </section>
-
-  <section id="Expertise">
-    <h2 style="padding-left: 100px; color: #000000;text-align: left; font-size: 2em; margin-bottom: 20px;"><strong>Studies and Research</strong></h2>
-    <div class="studies-container"><div class="section" style="width: 30%;">
-        <div class="image-wrapper">
-          <img src="./master plan Type G0-35.png"  style="width: 80%;" alt="Map and research image 1">
-        </div>
-      </div>
-      <div class="section" style="width: 20%; margin-left: -17%;">
-        <div class="image-wrapper">
-          <img src="./master plan Type G0 2-35.png"  style="height: 50%;" alt="Map and research image 1">
-          <img src="./master plan Type G0 3-35-35.png"  style="height: 25%;" alt="Map and research image 1">
-          <img src="./master plan Type G0 4-35-35.png"  style="height: 25%;" alt="Map and research image 1">
-        </div>
-      </div>
-      
-      <div class="section">
-          <div class="image-wrapper">
-              <img src="./Valdoise-35.png" style="margin-left:-20%; width:120%;    height: 100%;" alt="Map and research image 2"> 
-              
-              <div style="display: flex; justify-content: space-between;margin-left: -17%;">
-                <img src="./Valdoise-2-35.png" style="width:20%; height: 100%;" alt="Map and research image 2">
-                <img src="./Valdoise-3-35.png" style="width:20%; height: 100%;" alt="Map and research image 2">
-                <img src="./Valdoise-4-35.png" style="width:20%; height: 100%;" alt="Map and research image 2">
-                <img src="./Valdoise-5-35.png" style="width:20%; height: 100%;" alt="Map and research image 2">
-                <img src="./Valdoise-6-35.png" style="width:20%; height: 100%;" alt="Map and research image 2">
+            <div class="col-md-4 col-4 p-1">
+              <a href="./Valdoise-4-35.png" data-lightbox="research-gallery" data-title="Research Image 8">
+                <img src="./Valdoise-4-35.png" class="img-fluid" alt="Map and research image 8">
+              </a>
             </div>
           </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="Expertise2">
-    <div class="gallery-container">
-      <h2><strong>Our Designs</strong></h2>
-      <div class="gallery">
-        <!-- Gallery items -->
-        <div class="gallery-item">
-          <img src="Design-35.png" alt="Design Image 1">
         </div>
-        <!-- Add other gallery items similarly -->
       </div>
     </div>
   </section>
+  
+  <!-- Include Lightbox2 CSS and JS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  
+<!-- Our Designs Section -->
+<section id="Expertise" class="my-5">
+    <div class="container">
+      <h2 style="color: #000000; text-align: left; font-size: 2em; margin-bottom: 20px;"><strong>Our Designs</strong></h2>
+      <div class="row">
+        <!-- Row 1 -->
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design-35.png" data-lightbox="design-gallery" data-title="Design Image 1">
+            <img src="Design-35.png" alt="Design Image 1" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design-2png-35.png" data-lightbox="design-gallery" data-title="Design Image 2">
+            <img src="Design-2png-35.png" alt="Design Image 2" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design 8-35.png" data-lightbox="design-gallery" data-title="Design Image 3">
+            <img src="Design 8-35.png" alt="Design Image 3" class="img-fluid">
+          </a>
+        </div>
+        <!-- Row 2 -->
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design 9-35.png" data-lightbox="design-gallery" data-title="Design Image 4">
+            <img src="Design 9-35.png" alt="Design Image 4" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design 10-35.png" data-lightbox="design-gallery" data-title="Design Image 5">
+            <img src="Design 10-35.png" alt="Design Image 5" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design 3-35.png" data-lightbox="design-gallery" data-title="Design Image 6">
+            <img src="Design 3-35.png" alt="Design Image 6" class="img-fluid">
+          </a>
+        </div>
+        <!-- Row 3 -->
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design 4-35.png" data-lightbox="design-gallery" data-title="Design Image 7">
+            <img src="Design 4-35.png" alt="Design Image 7" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Valdoise-5-35.png" data-lightbox="design-gallery" data-title="Design Image 8">
+            <img src="Valdoise-5-35.png" alt="Design Image 8" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design 12-35.png" data-lightbox="design-gallery" data-title="Design Image 9">
+            <img src="Design 12-35.png" alt="Design Image 9" class="img-fluid">
+          </a>
+        </div>
+        <!-- Row 4 -->
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design 11-35.png" data-lightbox="design-gallery" data-title="Design Image 10">
+            <img src="Design 11-35.png" alt="Design Image 10" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-6 mb-4">
+          <a href="design 5-35.png" data-lightbox="design-gallery" data-title="Design Image 11">
+            <img src="design 5-35.png" alt="Design Image 11" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design 6-35.png" data-lightbox="design-gallery" data-title="Design Image 12">
+            <img src="Design 6-35.png" alt="Design Image 12" class="img-fluid">
+          </a>
+        </div>
+        <div class="col-md-4 col-6 mb-4">
+          <a href="Design 7-35.png" data-lightbox="design-gallery" data-title="Design Image 13">
+            <img src="Design 7-35.png" alt="Design Image 13" class="img-fluid">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Include Lightbox2 CSS and JS for diaporama functionality -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  
 
-  <section style="color: #000000;" id="contact">
+  <!-- Contact Section -->
+  <section id="contact">
     <img style="width: 102%; height: 120%; margin-left: -1%; margin-right: 0%; margin-bottom: -4%;" src="contact-35.png" alt="Contact Image">
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2024 GUAMOBILITY. All rights reserved.</p>
   </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
     // Get all the nav links and sections
@@ -828,33 +1015,35 @@
         }
       });
     });
-
     let currentIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-      });
-      document.querySelector('.slides').style.transform = `translateX(-${index * 100}%)`;
-    }
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+  });
+  dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+  });
+  document.querySelector('.slides').style.transform = `translateX(-${index * 100}%)`;
+}
 
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        currentIndex = index;
-        showSlide(index);
-      });
-    });
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+      currentIndex = index;
+      showSlide(index);
+  });
+});
 
-    // Automatically change slides every 5 seconds
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }, 5000);
+// Automatically change slides every 5 seconds
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  showSlide(currentIndex);
+}, 5000);
+
+    
   </script>
 </body>
+
 </html>
